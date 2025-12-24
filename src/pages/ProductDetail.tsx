@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
@@ -32,7 +32,11 @@ export default function ProductDetail() {
   const addToCart = useCartStore((state) => state.addItem);
   const { addItem: addToWishlist, removeItem: removeFromWishlist, isInWishlist } =
     useWishlistStore();
+ 
 
+     useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   const product = products.find((p) => p.id === id);
 
   if (!product) {
@@ -116,16 +120,16 @@ export default function ProductDetail() {
             </Link>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-24">
             {/* Images */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="space-y-4"
+              className="space-y-4 "
             >
               {/* Main Image */}
-              <div className="aspect-square overflow-hidden rounded-xl bg-secondary/50">
+              <div className="aspect-square h-[400px] overflow-hidden rounded-xl bg-secondary/50">
                 <img
                   src={product.images[selectedImage]}
                   alt={product.name}
@@ -162,7 +166,7 @@ export default function ProductDetail() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="space-y-6"
+              className="space-y-2"
             >
               {/* Badges */}
               <div className="flex gap-2">

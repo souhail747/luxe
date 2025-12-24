@@ -1,51 +1,52 @@
-import { useState, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useSearchParams } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Filter, SlidersHorizontal, X } from 'lucide-react';
-import { Layout } from '@/components/layout/Layout';
-import { ProductCard } from '@/components/products/ProductCard';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Slider } from '@/components/ui/slider';
+import { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import { useSearchParams } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Filter, SlidersHorizontal, X } from "lucide-react";
+import { Layout } from "@/components/layout/Layout";
+import { ProductCard } from "@/components/products/ProductCard";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Slider } from "@/components/ui/slider";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
+} from "@/components/ui/select";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@/components/ui/sheet';
-import { Checkbox } from '@/components/ui/checkbox';
-import { products, categories } from '@/data/products';
+} from "@/components/ui/sheet";
+import { Checkbox } from "@/components/ui/checkbox";
+import { products, categories } from "@/data/products";
 
 const sortOptions = [
-  { value: 'featured', label: 'Featured' },
-  { value: 'newest', label: 'Newest' },
-  { value: 'price-asc', label: 'Price: Low to High' },
-  { value: 'price-desc', label: 'Price: High to Low' },
-  { value: 'rating', label: 'Top Rated' },
+  { value: "featured", label: "Featured" },
+  { value: "newest", label: "Newest" },
+  { value: "price-asc", label: "Price: Low to High" },
+  { value: "price-desc", label: "Price: High to Low" },
+  { value: "rating", label: "Top Rated" },
 ];
 
 export default function Shop() {
   const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [priceRange, setPriceRange] = useState([0, 1000]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>(
-    searchParams.get('category') ? [searchParams.get('category')!] : []
+    searchParams.get("category") ? [searchParams.get("category")!] : []
   );
-  const [sortBy, setSortBy] = useState('featured');
+  const [sortBy, setSortBy] = useState("featured");
   const [filterOpen, setFilterOpen] = useState(false);
 
   const filteredProducts = useMemo(() => {
     let result = [...products];
+    window.scrollTo({ top: 0, behavior: "smooth" });
 
     // Search filter
     if (search) {
@@ -68,26 +69,32 @@ export default function Shop() {
 
     // Sort
     switch (sortBy) {
-      case 'newest':
-        result = result.filter((p) => p.isNew).concat(result.filter((p) => !p.isNew));
+      case "newest":
+        result = result
+          .filter((p) => p.isNew)
+          .concat(result.filter((p) => !p.isNew));
         break;
-      case 'price-asc':
+      case "price-asc":
         result.sort((a, b) => a.price - b.price);
         break;
-      case 'price-desc':
+      case "price-desc":
         result.sort((a, b) => b.price - a.price);
         break;
-      case 'rating':
+      case "rating":
         result.sort((a, b) => b.rating - a.rating);
         break;
       default:
-        result = result.filter((p) => p.featured).concat(result.filter((p) => !p.featured));
+        result = result
+          .filter((p) => p.featured)
+          .concat(result.filter((p) => !p.featured));
     }
 
     return result;
   }, [search, selectedCategories, priceRange, sortBy]);
 
   const toggleCategory = (categoryId: string) => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
     setSelectedCategories((prev) =>
       prev.includes(categoryId)
         ? prev.filter((c) => c !== categoryId)
@@ -96,10 +103,10 @@ export default function Shop() {
   };
 
   const clearFilters = () => {
-    setSearch('');
+    setSearch("");
     setPriceRange([0, 1000]);
     setSelectedCategories([]);
-    setSortBy('featured');
+    setSortBy("featured");
     setSearchParams({});
   };
 
@@ -107,7 +114,7 @@ export default function Shop() {
     <div className="space-y-6">
       {/* Categories */}
       <div>
-        <h3 className="font-medium mb-4">{t('products.category')}</h3>
+        <h3 className="font-medium mb-4">{t("products.category")}</h3>
         <div className="space-y-3">
           {categories.map((category) => (
             <label
@@ -126,7 +133,7 @@ export default function Shop() {
 
       {/* Price Range */}
       <div>
-        <h3 className="font-medium mb-4">{t('products.priceRange')}</h3>
+        <h3 className="font-medium mb-4">{t("products.priceRange")}</h3>
         <Slider
           value={priceRange}
           onValueChange={setPriceRange}
@@ -142,7 +149,7 @@ export default function Shop() {
 
       {/* Clear Filters */}
       <Button variant="outline" onClick={clearFilters} className="w-full">
-        {t('products.clearFilters')}
+        {t("products.clearFilters")}
       </Button>
     </div>
   );
@@ -152,19 +159,15 @@ export default function Shop() {
       <div className="pt-24 pb-16">
         <div className="container-custom">
           {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h1 className="font-display text-4xl md:text-5xl font-medium mb-4">
-              {t('nav.shop')}
-            </h1>
-            <p className="text-muted-foreground text-lg">
-              {t('products.showingResults', { count: filteredProducts.length })}
+          <div className="relative w-full flex items-center mb-4">
+            <p className="font-display text-4xl md:text-4xl font-medium">
+              {t("nav.shop")}
             </p>
-          </motion.div>
+
+            <p className="absolute left-1/2 -translate-x-1/2 text-muted-foreground text-lg">
+              {t("products.showingResults", { count: filteredProducts.length })}
+            </p>
+          </div>
 
           <div className="flex gap-8">
             {/* Desktop Filters */}
@@ -177,7 +180,7 @@ export default function Shop() {
               <div className="sticky top-24 space-y-6">
                 <div className="flex items-center justify-between">
                   <h2 className="font-display text-xl font-medium">
-                    {t('products.filter')}
+                    {t("products.filter")}
                   </h2>
                   <SlidersHorizontal className="h-5 w-5 text-muted-foreground" />
                 </div>
@@ -197,14 +200,14 @@ export default function Shop() {
                 {/* Search */}
                 <div className="relative w-full sm:w-64">
                   <Input
-                    placeholder={t('nav.search')}
+                    placeholder={t("nav.search")}
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     className="pr-10"
                   />
                   {search && (
                     <button
-                      onClick={() => setSearch('')}
+                      onClick={() => setSearch("")}
                       className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                     >
                       <X className="h-4 w-4" />
@@ -218,12 +221,12 @@ export default function Shop() {
                     <SheetTrigger asChild>
                       <Button variant="outline" className="lg:hidden gap-2">
                         <Filter className="h-4 w-4" />
-                        {t('products.filter')}
+                        {t("products.filter")}
                       </Button>
                     </SheetTrigger>
                     <SheetContent side="left">
                       <SheetHeader>
-                        <SheetTitle>{t('products.filter')}</SheetTitle>
+                        <SheetTitle>{t("products.filter")}</SheetTitle>
                       </SheetHeader>
                       <div className="mt-6">
                         <FilterContent />
@@ -234,7 +237,7 @@ export default function Shop() {
                   {/* Sort */}
                   <Select value={sortBy} onValueChange={setSortBy}>
                     <SelectTrigger className="w-48">
-                      <SelectValue placeholder={t('products.sortBy')} />
+                      <SelectValue placeholder={t("products.sortBy")} />
                     </SelectTrigger>
                     <SelectContent>
                       {sortOptions.map((option) => (
@@ -268,7 +271,7 @@ export default function Shop() {
                   {search && (
                     <span className="inline-flex items-center gap-1 px-3 py-1 bg-secondary rounded-full text-sm">
                       "{search}"
-                      <button onClick={() => setSearch('')}>
+                      <button onClick={() => setSearch("")}>
                         <X className="h-3 w-3" />
                       </button>
                     </span>
@@ -280,7 +283,11 @@ export default function Shop() {
               {filteredProducts.length > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
                   {filteredProducts.map((product, index) => (
-                    <ProductCard key={product.id} product={product} index={index} />
+                    <ProductCard
+                      key={product.id}
+                      product={product}
+                      index={index}
+                    />
                   ))}
                 </div>
               ) : (
@@ -290,10 +297,10 @@ export default function Shop() {
                   className="text-center py-16"
                 >
                   <p className="text-muted-foreground text-lg">
-                    {t('products.noProducts')}
+                    {t("products.noProducts")}
                   </p>
                   <Button onClick={clearFilters} className="mt-4">
-                    {t('products.clearFilters')}
+                    {t("products.clearFilters")}
                   </Button>
                 </motion.div>
               )}

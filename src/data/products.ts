@@ -199,6 +199,24 @@ export const products: Product[] = [
     sku: 'SK-008',
     isNew: true,
   },
+{
+    id: '9',
+    name: 'Premium Skincare ',
+    description: 'Complete skincare routine featuring cleanser, serum, moisturizer, and SPF. Formulated with natural ingredients and suitable for all skin types.',
+    price: 750,
+    images: [
+      'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800',
+      'https://images.unsplash.com/photo-1570194065650-d99fb4d38c59?w=800',
+    ],
+    category: 'beauty',
+    tags: ['skincare', 'natural', 'beauty'],
+    rating: 4.7,
+    reviewCount: 189,
+    inStock: true,
+    stockCount: 54,
+    sku: 'SK-008',
+    isNew: true,
+  },
 ];
 
 export const categories = [
@@ -235,7 +253,7 @@ export const categories = [
   {
     id: 'sports',
     name: 'Sports',
-    image: 'https://images.unsplash.com/photo-1461896836934- voices-of-experience?w=800',
-    productCount: 45,
+image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800"
+    ,productCount: 45,
   },
 ];

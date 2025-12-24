@@ -1,8 +1,8 @@
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Facebook, Twitter, Instagram, Youtube, Send } from 'lucide-react';
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Facebook, Twitter, Instagram, Youtube, Send } from "lucide-react";
 
 export function Footer() {
   const { t } = useTranslation();
@@ -17,7 +17,7 @@ export function Footer() {
               LUXE
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Curating exceptional products for the discerning individual. 
+              Curating exceptional products for the discerning individual.
               Quality, elegance, and sophistication in every detail.
             </p>
             <div className="flex gap-4">
@@ -50,26 +50,52 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-6">
-            <h4 className="font-display text-lg font-medium">{t('footer.quickLinks')}</h4>
+            <h4 className="font-display text-lg font-medium">
+              {t("footer.quickLinks")}
+            </h4>
             <ul className="space-y-3">
               <li>
-                <Link to="/shop" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  {t('nav.shop')}
+                <Link
+                  to="/shop"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
+                >
+                  {t("nav.shop")}
                 </Link>
               </li>
               <li>
-                <Link to="/categories" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  {t('nav.categories')}
+                <Link
+                  to="/categories"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
+                >
+                  {t("nav.categories")}
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  {t('nav.about')}
+                <Link
+                  to="/about"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
+                >
+                  {t("nav.about")}
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  {t('nav.contact')}
+                <Link
+                  to="/contact"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
+                >
+                  {t("nav.contact")}
                 </Link>
               </li>
             </ul>
@@ -77,26 +103,40 @@ export function Footer() {
 
           {/* Customer Service */}
           <div className="space-y-6">
-            <h4 className="font-display text-lg font-medium">{t('footer.customerService')}</h4>
+            <h4 className="font-display text-lg font-medium">
+              {t("footer.customerService")}
+            </h4>
             <ul className="space-y-3">
               <li>
-                <Link to="/faq" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  {t('footer.faq')}
+                <Link
+                  to="/faq"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
+                  {t("footer.faq")}
                 </Link>
               </li>
               <li>
-                <Link to="/shipping" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  {t('footer.shipping')}
+                <Link
+                  to="/shipping"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
+                  {t("footer.shipping")}
                 </Link>
               </li>
               <li>
-                <Link to="/returns" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  {t('footer.returnPolicy')}
+                <Link
+                  to="/returns"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
+                  {t("footer.returnPolicy")}
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  {t('footer.contactUs')}
+                <Link
+                  to="/contact"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
+                  {t("footer.contactUs")}
                 </Link>
               </li>
             </ul>
@@ -104,14 +144,16 @@ export function Footer() {
 
           {/* Newsletter */}
           <div className="space-y-6">
-            <h4 className="font-display text-lg font-medium">{t('footer.newsletter')}</h4>
+            <h4 className="font-display text-lg font-medium">
+              {t("footer.newsletter")}
+            </h4>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              {t('footer.newsletterText')}
+              {t("footer.newsletterText")}
             </p>
             <div className="flex gap-2">
               <Input
                 type="email"
-                placeholder={t('footer.emailPlaceholder')}
+                placeholder={t("footer.emailPlaceholder")}
                 className="flex-1"
               />
               <Button size="icon" className="shrink-0">
@@ -124,14 +166,30 @@ export function Footer() {
         {/* Bottom */}
         <div className="border-t border-border mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            {t('footer.copyright')}
+            ©2025{" "}
+            <Link
+              to="https://benhamedsouhailportfolio.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-yellow-500 hover:underline mx-1"
+            >
+              Souhail
+            </Link>{" "}
+            All rights reserved.
           </p>
+
           <div className="flex gap-6">
-            <Link to="/privacy" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-              {t('footer.privacyPolicy')}
+            <Link
+              to="/privacy"
+              className="text-muted-foreground hover:text-primary transition-colors text-sm"
+            >
+              {t("footer.privacyPolicy")}
             </Link>
-            <Link to="/terms" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-              {t('footer.termsOfService')}
+            <Link
+              to="/terms"
+              className="text-muted-foreground hover:text-primary transition-colors text-sm"
+            >
+              {t("footer.termsOfService")}
             </Link>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { categories } from '@/data/products';
 import { Layout } from "@/components/layout/Layout";
 
-export function Categories() {
+export function NewCategories() {
   const { t } = useTranslation();
 
   const getCategoryName = (id: string) => {
@@ -13,7 +13,7 @@ export function Categories() {
   };
 
   return (
-    <Layout>
+
     <section className="py-20 md:py-32 bg-secondary/30">
       <div className="container-custom">
         {/* Header */}
@@ -76,6 +76,6 @@ export function Categories() {
         </div>
       </div>
     </section>
-    </Layout>
+  
   );
 }

@@ -58,7 +58,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
-      <Link to={`/product/${product.id}`} className="group block">
+      <Link to={`/product/${product.id}`} className="group block" >
         <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-secondary/50">
           {/* Image */}
           <img
