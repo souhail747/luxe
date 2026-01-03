@@ -140,6 +140,8 @@ export function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+
   const logout = () => {
     Cookies.remove("token");
     Cookies.remove("user");
@@ -167,7 +169,7 @@ export function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? "glass-effect shadow-sm" : "bg-transparent"
       }`}
-    >
+    > 
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
@@ -260,7 +262,7 @@ export function Header() {
               )}
             </Button>
 
-            {/* Wishlist */}
+            {/* Wishlist */} 
             <Link to="/wishlist">
               <Button
                 variant="ghost"

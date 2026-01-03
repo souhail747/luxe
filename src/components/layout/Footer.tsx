@@ -163,35 +163,18 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className="border-t border-border mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="border-t border-border mt-8 pt-8 text-center">
           <p className="text-muted-foreground text-sm">
-            ©2025{" "}
+            © 2025 LUXE. All rights reserved.{" "}
             <Link
-              to="https://benhamedsouhailportfolio.vercel.app/"
+              to="https://benhamedsouhailportfolio.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-bold text-yellow-500 hover:underline mx-1"
+              className="font-bold hover:cursor-pointer text-orange-500"
             >
-              Souhail
-            </Link>{" "}
-            All rights reserved.
+              by Souhail
+            </Link>
           </p>
-
-          <div className="flex gap-6">
-            <Link
-              to="/privacy"
-              className="text-muted-foreground hover:text-primary transition-colors text-sm"
-            >
-              {t("footer.privacyPolicy")}
-            </Link>
-            <Link
-              to="/terms"
-              className="text-muted-foreground hover:text-primary transition-colors text-sm"
-            >
-              {t("footer.termsOfService")}
-            </Link>
-          </div>
         </div>
       </div>
     </footer>
